@@ -160,3 +160,49 @@ In this example , "practice" is a Database collection.
 ## What is aggregation in mongodb ?
 
 Aggregation is a way of processing a large number of documents in a collection by means of passing them through different stages. The stages make up what is known as a pipeline. The stages in a pipeline can filter, sort, group, reshape and modify documents that pass through the pipeline.
+
+![Aggregation](https://studio3t.com/wp-content/uploads/2018/10/Mongodb.png)
+
+This is an example of the aggregation pipeline syntax:
+
+```
+  pipeline  = [
+        { $match : { … } },
+        { $group : { … } },
+        { $sort : { … } }
+       ]
+```
+
+Some Example for aggregation :
+
+## `$match` Stage - Selects documents if a field is of the specified type.
+
+```
+  db.practice.aggregate(
+    {
+      $match : {
+          gender : 'Male' ,
+          age : {$gt :18}
+      }
+    }
+  )
+```
+
+If you want to use project then:
+
+```
+  db.practice.aggregate(
+    {
+      $match : {
+          gender : 'Male' ,
+          age : {$gt :18}
+      }
+    },
+    {
+      $project: {
+        gender: 1 ,
+        age: 1
+      }
+    }
+  )
+```
