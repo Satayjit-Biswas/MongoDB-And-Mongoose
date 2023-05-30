@@ -132,3 +132,31 @@ In this example , "practice" is a Database collection.
         gender: 1
     })
 ```
+
+# Element Query Operators:
+
+#### $exists `Matches documents that have the specified field.`
+
+```
+  db.practice.find(
+              { skills :{ $exists : true} },
+    ).project({
+        skills: 1,
+    })
+```
+
+#### $type `Selects documents if a field is of the specified type.`
+
+```
+  db.practice.find(
+              { skills :{ $type : 'int' } },
+    ).project({
+        skills: 1,
+    })
+```
+
+# Aggregation Query Operations:
+
+## What is aggregation in mongodb ?
+
+Aggregation is a way of processing a large number of documents in a collection by means of passing them through different stages. The stages make up what is known as a pipeline. The stages in a pipeline can filter, sort, group, reshape and modify documents that pass through the pipeline.
